@@ -1,14 +1,17 @@
-Wearable Activity Data Analysis
+Project: Wearable Data Analysis
 
-This project explores Fitbit activity data using Python.
+Dataset: Fitbit Activity Dataset
 
-Objectives:
-- Explore activity patterns
-- Assess data quality
-- Analyze relationship between steps and calories
+Objective:
+Explore patterns in physical activity and evaluate data quality.
 
 Tools:
-Python
-Pandas
-Matplotlib
+Python,
+Pandas,
+Matplotlib,
 Google Colab
+
+Key Insights:
+- Average daily steps
+- Relationship between steps and calories
+- Missing data patterns
