@@ -1,4 +1,4 @@
-Project: Wearable Activity Data Analysis
+Wearable Activity Data Analysis
 
 This project explores Fitbit activity data using Python.
 
