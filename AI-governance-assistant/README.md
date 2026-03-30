@@ -15,4 +15,4 @@ To demonstrate how generative AI can support AI governance and risk evaluation.
 - Google Colab
 
 ## Example Use Case
-Generating a risk checklist for an AI model predicting hospital readmissions.
+Generating a risk checklist for an AI model predicting hospital readmissions, and for cancer detection from medical images.
