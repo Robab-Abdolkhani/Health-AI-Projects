@@ -1,8 +1,8 @@
-Heart Disease Risk Prediction in Healthcare
-Overview
+# Heart Disease Risk Prediction in Healthcare
+## Overview
 This project developed a machine learning model for predicting the presence of heart disease using a structured clinical dataset.
 Rather than focusing solely on predictive performance, this project examines the clinical relevance, limitations, and governance considerations associated with deploying such models in healthcare settings.
-Clinical Problem Statement
+## Clinical Problem Statement
 Cardiovascular disease remains one of the leading causes of mortality globally. Early identification of individuals at high risk is critical for:
 Preventive interventions
 Prioritisation of clinical resources
