@@ -4,9 +4,9 @@ This project developed a machine learning model for predicting the presence of h
 Rather than focusing solely on predictive performance, this project examines the clinical relevance, limitations, and governance considerations associated with deploying such models in healthcare settings.
 ## Clinical Problem Statement
 Cardiovascular disease remains one of the leading causes of mortality globally. Early identification of individuals at high risk is critical for:
-Preventive interventions
-Prioritisation of clinical resources
-Reducing hospital admissions and long-term complications
+#Preventive interventions
+#Prioritisation of clinical resources
+#Reducing hospital admissions and long-term complications
 This project simulates a decision-support scenario in which a predictive model could assist clinicians in identifying patients who may require further diagnostic evaluation.
 Dataset
 The dataset used in this project is a publicly available heart disease dataset sourced from Kaggle.
