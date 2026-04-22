@@ -1,40 +1,47 @@
-## ICU Mortality Prediction with Explainable AI Using a PhysioNet-Derived Critical Care Dataset
+# ICU Mortality Prediction with Explainable AI 
 ## Overview
 This project develops and interprets a machine learning model for predicting in-hospital mortality in intensive care unit (ICU) patients using a PhysioNet-derived critical care dataset. The project was designed not only to build a predictive model, but also to demonstrate how explainability and clinically meaningful evaluation can support safer and more trustworthy use of AI in healthcare.
+
 Rather than focusing only on model accuracy, this project examines how ICU mortality prediction should be evaluated in a high-stakes clinical context, where missed high-risk patients may have serious consequences.
-Clinical Problem Statement
+
+## Clinical Problem Statement
 Early identification of ICU patients at increased risk of in-hospital mortality can support timely escalation of care, closer monitoring, and more informed clinical prioritisation. In real-world settings, such models could function as clinical decision-support tools for risk stratification rather than autonomous decision-makers.
+
 This project therefore asks:
+
 Can a machine learning model identify patients at higher mortality risk using structured ICU variables, and can its predictions be explained in a way that supports clinical trust?
-Dataset
-This project uses a PhysioNet-derived ICU dataset containing outcome labels and clinically relevant severity indicators. The selected dataset structure reflects real-world critical care modelling tasks and is aligned with the broader MIMIC/PhysioNet ecosystem commonly used in Health AI research.
-Why this dataset matters
-Using a PhysioNet-derived ICU dataset signals greater domain relevance than generic benchmark datasets because:
-it represents a real critical care setting
-it includes clinically meaningful variables and outcome labels
-it reflects the kinds of data challenges seen in healthcare AI, including missingness, heterogeneity, and the need for careful interpretation
-Important limitations
-This is a secondary, processed dataset rather than a full raw MIMIC workflow
-It may not fully represent current ICU populations or local care pathways
-Model performance may not generalise to other hospitals or health systems without external validation
-Project Objectives
+
 This project aimed to:
-build a baseline ICU mortality prediction model
-evaluate the model using clinically relevant metrics beyond accuracy
-apply explainable AI methods to identify which features drive predictions
-frame results in terms of clinical utility, limitations, and governance considerations
-Methods
-Data preparation
-Loaded structured ICU outcome data from a PhysioNet-derived source
-Defined In-hospital_death as the target variable
-Separated predictors and outcome
-Split the data into training and test sets
-Applied imputation to handle missing values
-Modelling
+1. Build a baseline ICU mortality prediction model
+2. Evaluate the model using clinically relevant metrics beyond accuracy
+3. Apply explainable AI methods to identify which features drive predictions
+4. Frame results in terms of clinical utility, limitations, and governance considerations
+
+## Dataset
+This project uses a PhysioNet-derived ICU dataset containing outcome labels and clinically relevant severity indicators. The selected dataset structure reflects real-world critical care modelling tasks and is aligned with the broader MIMIC/PhysioNet ecosystem commonly used in Health AI research.
+Using a PhysioNet-derived ICU dataset signals greater domain relevance than generic benchmark datasets because:
+- It represents a real critical care setting
+- It includes clinically meaningful variables and outcome labels
+- It reflects the kinds of data challenges seen in healthcare AI, including missingness, heterogeneity, and the need for careful interpretation
+
+## Important limitations
+- This is a secondary, processed dataset rather than a full raw MIMIC workflow
+- It may not fully represent current ICU populations or local care pathways
+- Model performance may not generalise to other hospitals or health systems without external validation
+Project Objectives
+
+## Methods
+### Data preparation
+- Loaded structured ICU outcome data from a PhysioNet-derived source
+- Defined In-hospital_death as the target variable
+- Separated predictors and outcome
+- Split the data into training and test sets
+- Applied imputation to handle missing values
+### Modelling
 The project used:
-Logistic Regression as an interpretable baseline
-Random Forest as a more flexible non-linear model
-Evaluation
+- Logistic Regression as an interpretable baseline
+- Random Forest as a more flexible non-linear model
+### Evaluation
 In healthcare, accuracy alone can be misleading, especially when class imbalance is present. For this reason, the project focused on:
 Recall / Sensitivity
 Precision
