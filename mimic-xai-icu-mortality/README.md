@@ -43,77 +43,45 @@ The project used:
 - Random Forest as a more flexible non-linear model
 ### Evaluation
 In healthcare, accuracy alone can be misleading, especially when class imbalance is present. For this reason, the project focused on:
-Recall / Sensitivity
-Precision
-Confusion Matrix
-ROC-AUC
+- Recall / Sensitivity
+- Precision
+- Confusion Matrix
+- ROC-AUC
+
 This is important because in a mortality prediction setting, false negatives may represent patients whose risk is underestimated.
-Explainability
+## Explainability
 To improve interpretability, SHAP was used to identify which features most strongly influenced mortality predictions. This supports transparency and helps connect model outputs to clinically meaningful signals.
-Key Findings
+## Key Findings
 This project showed that:
-ICU mortality can be predicted with structured clinical variables
-Evaluation must go beyond accuracy to reflect clinical risk
-Explainability is essential in high-stakes settings such as critical care
-Severity-related variables were among the strongest contributors to model output, which is consistent with established ICU risk assessment logic
-Explainability insight
-SHAP analysis was used to examine feature influence at the model level. This helps answer an important question in healthcare AI:
+- ICU mortality can be predicted with structured clinical variables
+- Evaluation must go beyond accuracy to reflect clinical risk
+- Explainability is essential in high-stakes settings such as critical care
+- Severity-related variables were among the strongest contributors to model output, which is consistent with established ICU risk assessment logic
+- SHAP analysis was used to examine feature influence at the model level. This helps answer an important question in healthcare AI:
 Why is the model flagging this patient as high risk?
-That question is central to trust, clinical adoption, and governance.
-Clinical Utility
+## Clinical Utility
 This project is not intended to propose autonomous clinical decision-making. Instead, the model should be understood as a decision-support tool that could potentially help clinicians:
-identify higher-risk ICU patients earlier
-support prioritisation and escalation decisions
-complement existing severity scoring approaches
-improve visibility of risk patterns in complex patient data
+- Identify higher-risk ICU patients earlier
+- Support prioritisation and escalation decisions
+- Complement existing severity scoring approaches
+- Improve visibility of risk patterns in complex patient data
+  
 Any real-world deployment would require local validation, workflow integration, human oversight, and continuous monitoring.
-Why this project is relevant to Health AI
-This project demonstrates several capabilities that are especially important in Health AI and Digital Health:
-working with a clinically relevant critical care dataset rather than a generic public dataset
-evaluating models using healthcare-appropriate metrics
-applying explainable AI in a low-trust, high-risk domain
-recognising that model performance alone is insufficient without clinical context, interpretability, and governance thinking
-Ethical and Governance Considerations
+## Ethical and Governance Considerations
 Healthcare AI systems should not be judged only by technical performance. This project highlights several broader considerations:
-1. Accountability
-If a model contributes to risk assessment, responsibility for decisions still remains with the clinical team and the deploying organisation.
-2. Explainability
-Black-box outputs are harder to justify in critical care. Explainability methods such as SHAP help improve transparency but do not replace clinical judgment.
-3. Bias and generalisability
-A model trained on one dataset may not perform equally well across settings, populations, or workflow environments.
-4. Missing data
-Clinical data is often incomplete for non-random reasons. Even simple imputation strategies should be acknowledged as methodological limitations.
-Limitations
-Simplified modelling workflow relative to full MIMIC pipelines
-No external validation
-Baseline imputation strategy
-Limited bias analysis across demographic subgroups
-Retrospective data only
-Future Improvements
-Potential next steps include:
-cross-validation instead of single train/test split
-subgroup bias analysis
-calibration assessment
-comparison with clinical severity scores
-Streamlit dashboard for interactive exploration
-external validation on another ICU dataset
-patient-level SHAP explanations for individual case review
-Reproducibility
+
+- Accountability: If a model contributes to risk assessment, responsibility for decisions still remains with the clinical team and the deploying organisation.
+- Explainability: Black-box outputs are harder to justify in critical care. Explainability methods such as SHAP help improve transparency but do not replace clinical judgment.
+- Bias and generalisability: A model trained on one dataset may not perform equally well across settings, populations, or workflow environments.
+- Missing data: Clinical data is often incomplete for non-random reasons. Even simple imputation strategies should be acknowledged as methodological limitations.
+## Reproducibility
 Environment
-This project was developed in Google Colab using Python.
-Main libraries
-pandas
-numpy
-scikit-learn
-matplotlib
-shap
-Setup
-Install dependencies with:
-pip install -r requirements.txt
-Files
-mimic_xai_icu_mortality.ipynb — notebook containing preprocessing, modelling, evaluation, and explainability workflow
-README.md — project documentation
-requirements.txt — package list for reproducibility
-Final Reflection
+This project was developed in Google Colab using Python. Main libraries:
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- shap
+## Final Reflection
 The value of healthcare AI does not lie only in building predictive models. It lies in building models that can be interpreted, questioned, and used responsibly within clinical systems.
 This project was therefore designed not just as a machine learning exercise, but as a step toward more trustworthy and clinically meaningful AI in healthcare.
