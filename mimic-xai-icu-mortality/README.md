@@ -5,83 +5,59 @@ This project develops and interprets a machine learning model for predicting in-
 Rather than focusing only on model accuracy, this project examines how ICU mortality prediction should be evaluated in a high-stakes clinical context, where missed high-risk patients may have serious consequences.
 
 ## Clinical Problem Statement
-Early identification of ICU patients at increased risk of in-hospital mortality can support timely escalation of care, closer monitoring, and more informed clinical prioritisation. In real-world settings, such models could function as clinical decision-support tools for risk stratification rather than autonomous decision-makers.
+Early identification of high-risk patients in Intensive Care Units (ICUs) is critical for timely intervention, resource allocation, and improving patient outcomes. This project explores whether machine learning models can support ICU mortality risk stratification using clinically established severity indicators. Rather than focusing purely on predictive performance, the project emphasises:
+- Clinical plausibility
+- Explainability
+- Responsible use of health data
 
-This project therefore asks:
-
-Can a machine learning model identify patients at higher mortality risk using structured ICU variables, and can its predictions be explained in a way that supports clinical trust?
-
-This project aimed to:
-1. Build a baseline ICU mortality prediction model
-2. Evaluate the model using clinically relevant metrics beyond accuracy
-3. Apply explainable AI methods to identify which features drive predictions
-4. Frame results in terms of clinical utility, limitations, and governance considerations
 
 ## Dataset
-This project uses a PhysioNet-derived ICU dataset containing outcome labels and clinically relevant severity indicators. The selected dataset structure reflects real-world critical care modelling tasks and is aligned with the broader MIMIC/PhysioNet ecosystem commonly used in Health AI research.
-Using a PhysioNet-derived ICU dataset signals greater domain relevance than generic benchmark datasets because:
-- It represents a real critical care setting
-- It includes clinically meaningful variables and outcome labels
-- It reflects the kinds of data challenges seen in healthcare AI, including missingness, heterogeneity, and the need for careful interpretation
+This project uses a publicly available ICU outcomes dataset derived from PhysioNet.
+The dataset contains 4,000 ICU patient records with:
+- SAPS-I (Simplified Acute Physiology Score)
+- SOFA (Sequential Organ Failure Assessment)
+- Outcome variable: In-hospital mortality
 
-## Important limitations
-- This is a secondary, processed dataset rather than a full raw MIMIC workflow
-- It may not fully represent current ICU populations or local care pathways
-- Model performance may not generalise to other hospitals or health systems without external validation
-Project Objectives
+Key characteristics:
+- Mortality rate: ~13.8%
+- Structured clinical severity data
+- No missing values in selected predictors
 
 ## Methods
-### Data preparation
-- Loaded structured ICU outcome data from a PhysioNet-derived source
-- Defined In-hospital_death as the target variable
-- Separated predictors and outcome
-- Split the data into training and test sets
-- Applied imputation to handle missing values
-### Modelling
-The project used:
-- Logistic Regression as an interpretable baseline
-- Random Forest as a more flexible non-linear model
-### Evaluation
-In healthcare, accuracy alone can be misleading, especially when class imbalance is present. For this reason, the project focused on:
-- Recall / Sensitivity
-- Precision
-- Confusion Matrix
+1. Feature Selection 
+Only clinically appropriate variables were used:
+- SAPS-I
+- SOFA
+Variables such as Length of stay, Survival time, and Record identifiers were explicitly excluded to avoid data leakage and ensure that the model uses only information available at the time of clinical decision-making.
+2. Model Development
+Two models were implemented:
+- Logistic Regression (baseline, interpretable model)
+- Random Forest (non-linear ensemble model)
+
+Data was split into training and test sets using stratification to preserve class balance.
+
+3. Evaluation Strategy
+Model performance was evaluated using:
+- Precision, Recall, F1-score
 - ROC-AUC
-
-This is important because in a mortality prediction setting, false negatives may represent patients whose risk is underestimated.
-## Explainability
-To improve interpretability, SHAP was used to identify which features most strongly influenced mortality predictions. This supports transparency and helps connect model outputs to clinically meaningful signals.
-## Key Findings
-This project showed that:
-- ICU mortality can be predicted with structured clinical variables
-- Evaluation must go beyond accuracy to reflect clinical risk
-- Explainability is essential in high-stakes settings such as critical care
-- Severity-related variables were among the strongest contributors to model output, which is consistent with established ICU risk assessment logic
-- SHAP analysis was used to examine feature influence at the model level. This helps answer an important question in healthcare AI:
-Why is the model flagging this patient as high risk?
-## Clinical Utility
-This project is not intended to propose autonomous clinical decision-making. Instead, the model should be understood as a decision-support tool that could potentially help clinicians:
-- Identify higher-risk ICU patients earlier
-- Support prioritisation and escalation decisions
-- Complement existing severity scoring approaches
-- Improve visibility of risk patterns in complex patient data
+- Confusion Matrix
   
-Any real-world deployment would require local validation, workflow integration, human oversight, and continuous monitoring.
-## Ethical and Governance Considerations
-Healthcare AI systems should not be judged only by technical performance. This project highlights several broader considerations:
+This reflects a healthcare-aware evaluation approach, where recall (sensitivity) is particularly important to avoid missing high-risk patients.
 
-- Accountability: If a model contributes to risk assessment, responsibility for decisions still remains with the clinical team and the deploying organisation.
-- Explainability: Black-box outputs are harder to justify in critical care. Explainability methods such as SHAP help improve transparency but do not replace clinical judgment.
-- Bias and generalisability: A model trained on one dataset may not perform equally well across settings, populations, or workflow environments.
-- Missing data: Clinical data is often incomplete for non-random reasons. Even simple imputation strategies should be acknowledged as methodological limitations.
-## Reproducibility
-Environment
-This project was developed in Google Colab using Python. Main libraries:
-- pandas
-- numpy
-- scikit-learn
-- matplotlib
-- shap
-## Final Reflection
-The value of healthcare AI does not lie only in building predictive models. It lies in building models that can be interpreted, questioned, and used responsibly within clinical systems.
-This project was therefore designed not just as a machine learning exercise, but as a step toward more trustworthy and clinically meaningful AI in healthcare.
+## Explainability
+To move beyond black-box modelling, SHAP (SHapley Additive exPlanations) was used to interpret model predictions.
+Key Findings:
+- SAPS-I and SOFA contributed almost equally to model predictions
+- No single dominant feature
+- No spurious or non-clinical variables influencing predictions
+
+The model’s behavior aligns with clinical reasoning:
+- SAPS-I reflects overall physiological severity
+- SOFA reflects organ dysfunction
+The balanced importance suggests that mortality risk in ICU settings is driven by a combination of severity and organ failure, rather than a single dominant factor.
+This increases confidence in the model’s validity and interpretability.
+
+## Final Consideration
+This project demonstrates that in healthcare AI, model validity is not just about performance —
+it is about clinical plausibility, explainability, and responsible design.
+
